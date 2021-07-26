@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <!-- <link href="https://fonts.google.com/specimen/Festive" rel="stylesheet" type="text/css">
+   -->
+    <title>
+        Connected Solution
+    </title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Style.css')}}" />
+
+</head>
+
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Preventation of Readmission</a>
+        <div class="header-right">
+            <!--a href="index.html">Log Out</a-->
+        </div>
+    </div>
+
+    <p>Please fill in the form to get the accurate results</p>
+    <form action="{{ url_for('main') }}" method="POST">
+        <label>
+    Do you have a fever
+    <br>
+    <label for="yesFever">
+        <input type = "radio" name = "Fever" id = "yesFever">Yes
+    </label>
+        <label for="noFever">
+        <input type = "radio" name = "Fever" id = "noFever">No
+    </label><br>
+        <br>
+        </label>
+        <label> Do you find it Difficult to breath
+    <br>
+    <label for="yesDifficultBreathing">
+        <input type = "radio" name = "Difficulty breathing" id = "yesDifficultBreathing">Yes
+    </label>
+        <label for="noDifficultBreathing">
+        <input type = "radio" name = "Difficulty breathing" id = "noDifficultBreathing">No
+    </label>
+        </label>
+        <br><br>
+        <label>
+        Do you have a dry cough
+        <br>
+        <label for="yesDryCough">
+            <input type = "radio" name = "DryCough" id = "yesDryCough">Yes
+        </label>
+        <label for="noDryCough">
+            <input type = "radio" name = "DryCough" id = "noDryCough">No
+        </label>
+        </label>
+        <br><br>
+        <label>
+        Do you often feel tired
+        <br>
+        <label for="yesTiredness">
+            <input type = "radio" name = "tiredness" id = "yesTiredness">Yes
+        </label>
+        <label for="noTiredness">
+            <input type = "radio" name = "tiredness" id = "noTiredness">No
+        </label>
+        <br><br>
+        <label>
+            Do you feel any Chest pains
+            <br>
+            <label for="yesPains">
+                <input type = "radio" name = "pains" id = "yesPains">Yes
+            </label>
+        <label for="noPains">
+                <input type = "radio" name = "pains" id = "noPains">No
+            </label>
+        <br><br>
+        <label>
+                Do you have any nasal Congestion
+                <br>
+                <label for="yesNasal">
+                    <input type = "radio" name = "nasal" id = "yesNasal">Yes
+                </label>
+        <label for="noNasal">
+                    <input type = "radio" name = "nasal" id = "noNasal">No
+                </label>
+
+        <br><br>
+        <label>
+                        Do you have diarrhea
+                        <br>
+                        <label for="yesDiarrhea">
+                            <input type = "radio" name = "diarrhea" id = "yesDiarrhea">Yes
+                        </label>
+        <label for="noDiarrhea">
+                            <input type = "radio" name = "diarrhea" id = "noDiarrhea">No
+                        </label>
+        <br><br>
+        <label>
+                            Do you have a Runny nose
+                            <br>
+                            <label for="yesRunnyNose">
+                                <input type = "radio" name = "runnyNose" id = "yesRunnyNose">Yes
+                            </label>
+        <label for="noRunnyNose">
+                                <input type = "radio" name = "runnyNose" id = "noRunnyNose">No
+                            </label>
+        <br><br>
+        <label>
+                               What Gender are you
+                                <br>
+                                <label for="male">
+                                    <input type = "radio" name = "Gender" id = "male">male
+                                </label>
+        <label for="female">
+                                    <input type = "radio" name = "Gender" id = "female">female
+                                </label>
+
+        <br><br>
+        <div class="right"><button type="submit">Get Predictions</button></div>
+    </form>
+    <br>
+    <div class="result">
+        {% if result %}
+            {% for variable, value in original_input.items() %}
+                <b>{{ variable }}</b> : {{ value }}
+            {% endfor %}
+            <br>
+            <br> 
+               <p style="font-size:50px">{{ result }}</p>
+        {% endif %}
+    </div>
+
+    <div class="footer">
+        <p>Connected Health</p>
+    </div>
+</body>
+
+</html>
